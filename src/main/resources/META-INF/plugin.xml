@@ -1,0 +1,70 @@
+<idea-plugin>
+    <id>com.khanhromvn.copy-path-with-code</id>
+    <name>Copy Path with Code</name>
+    <version>0.0.6</version>
+    <vendor email="khanhromvn@gmail.com" url="https://github.com/khanhromvn">KhanhRom</vendor>
+
+    <description><![CDATA[
+        Copy file path along with its content to clipboard.<br>
+        <em>Features:</em>
+        <ul>
+            <li>Copy file path and content to clipboard</li>
+            <li>Manage code folders with files</li>
+            <li>Copy entire folder contents</li>
+        </ul>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        Initial version of Copy Path with Code plugin for JetBrains IDEs.
+    ]]></change-notes>
+
+    <idea-version since-build="203"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Copy Path with Code" icon="/icons/copyIcon.svg" 
+                   anchor="right" factoryClass="com.khanhromvn.copypathwithcode.toolWindow.CopyPathToolWindow"/>
+    </extensions>
+
+    <actions>
+        <group id="CopyPathWithCode.TopMenu" text="Copy Path with Code" 
+               description="Copy Path with Code Actions" popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            
+            <action id="CopyPathWithCode.CopyPathWithContent" 
+                    class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction"
+                    text="Copy Path and Content" description="Copy current file path and content"/>
+                    
+            <action id="CopyPathWithCode.ClearClipboard" 
+                    class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction"
+                    text="Clear Clipboard" description="Clear copied paths and content"/>
+                    
+            <separator/>
+            
+            <action id="CopyPathWithCode.CreateFolder" 
+                    class="com.khanhromvn.copypathwithcode.actions.CreateFolderAction"
+                    text="Create Folder" description="Create a new code folder"/>
+                    
+            <action id="CopyPathWithCode.AddFileToFolder" 
+                    class="com.khanhromvn.copypathwithcode.actions.AddFileToFolderAction"
+                    text="Add Current File to Folder" description="Add current file to a folder"/>
+                    
+            <action id="CopyPathWithCode.RemoveFileFromFolder" 
+                    class="com.khanhromvn.copypathwithcode.actions.RemoveFileFromFolderAction"
+                    text="Remove Current File from Folder" description="Remove current file from a folder"/>
+                    
+            <action id="CopyPathWithCode.OpenFolderFiles" 
+                    class="com.khanhromvn.copypathwithcode.actions.OpenFolderFilesAction"
+                    text="Open Folder Files" description="Open all files in a folder"/>
+                    
+            <action id="CopyPathWithCode.CopyFolderContents" 
+                    class="com.khanhromvn.copypathwithcode.actions.CopyFolderContentsAction"
+                    text="Copy Folder Contents" description="Copy all files content in a folder"/>
+                    
+            <action id="CopyPathWithCode.DeleteFolder" 
+                    class="com.khanhromvn.copypathwithcode.actions.DeleteFolderAction"
+                    text="Delete Folder" description="Delete a folder"/>
+        </group>
+    </actions>
+</idea-plugin>
