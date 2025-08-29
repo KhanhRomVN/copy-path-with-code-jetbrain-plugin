@@ -30,6 +30,7 @@ class CopyFolderContentsAction : AnAction() {
             folderNames,
             folderNames.firstOrNull()
         ) ?: return
+        if (selectedFolder == null) return
         
         ApplicationManager.getApplication().invokeLater {
             val folder = folders.first { it.name == selectedFolder }
