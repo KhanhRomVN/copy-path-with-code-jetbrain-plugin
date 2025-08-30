@@ -20,17 +20,19 @@ class OpenFolderFilesAction : AnAction() {
         }
         
         val folderNames = folders.map { it.name }.toTypedArray()
-        val selectedFolder = Messages.showChooseDialog(
+        val selectedIndex = Messages.showChooseDialog(
             project,
             "Select folder to open files",
             "Open Folder Files",
             Messages.getQuestionIcon(),
             folderNames,
-            folderNames.firstOrNull()
-        ) ?: return
+            folderNames.first()
+        )
+        
+        if (selectedIndex == -1) return // User cancelled
         
         ApplicationManager.getApplication().invokeLater {
-            val folder = folders.first { it.name == selectedFolder }
+            val folder = folders[selectedIndex]
             val fileEditorManager = FileEditorManager.getInstance(project)
             
             // Close all existing editors first

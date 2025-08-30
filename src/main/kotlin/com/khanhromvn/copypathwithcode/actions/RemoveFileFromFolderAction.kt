@@ -20,17 +20,19 @@ class RemoveFileFromFolderAction : AnAction() {
         }
         
         val folderNames = folders.map { it.name }.toTypedArray()
-        val selectedFolder = Messages.showChooseDialog(
+        val selectedIndex = Messages.showChooseDialog(
             project,
             "Select folder to remove file",
             "Remove File from Folder",
             Messages.getQuestionIcon(),
             folderNames,
-            folderNames.firstOrNull()
-        ) ?: return
+            folderNames.first()
+        )
+        
+        if (selectedIndex == -1) return // User cancelled
         
         ApplicationManager.getApplication().invokeLater {
-            val folder = folders.first { it.name == selectedFolder }
+            val folder = folders[selectedIndex]
             if (folder.files.contains(currentFile.path)) {
                 val updatedFiles = folder.files.toMutableList()
                 updatedFiles.remove(currentFile.path)

@@ -1,0 +1,37 @@
+<idea-plugin>
+  <id>com.khanhromvn.copy-path-with-code</id>
+  <name>IntelliJ Platform Plugin Template</name>
+  <version>2.3.1</version>
+  <vendor email="khanhromvn@gmail.com" url="https://github.com/khanhromvn">KhanhRom</vendor>
+  <description><![CDATA[<p>Copy Path With Code is a JetBrains IDE plugin that enables copying file and folder paths with customizable formatting directly from the IDE.</p>]]></description>
+  <change-notes><![CDATA[<h3>Added</h3>
+
+<ul><li>Add <code>platformBundledModules</code> to <code>gradle.properties</code> along with <code>bundledModules()</code> helper to the Gradle build file</li></ul>
+
+<h3>Changed</h3>
+
+<ul><li>Dependencies - upgrade <code>org.jetbrains.intellij.platform</code> to <code>2.7.1</code></li></ul>
+
+<h3>Fixed</h3>
+
+<ul><li>GitHub: Fixed the missing <code>$RELEASE_NOTE </code> parent directory in the Release workflow</li></ul>]]></change-notes>
+  <idea-version since-build="243" />
+  <depends>com.intellij.modules.platform</depends>
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="Copy Path with Code" icon="/icons/copyIcon.svg" anchor="right" factoryClass="com.khanhromvn.copypathwithcode.toolWindow.CopyPathToolWindow" />
+  </extensions>
+  <actions>
+    <group id="CopyPathWithCode.TopMenu" text="Copy Path with Code" description="Copy Path with Code Actions" popup="true">
+      <add-to-group group-id="ToolsMenu" anchor="first" />
+      <action id="CopyPathWithCode.CopyPathWithContent" class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction" text="Copy Path and Content" description="Copy current file path and content" />
+      <action id="CopyPathWithCode.ClearClipboard" class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction" text="Clear Clipboard" description="Clear copied paths and content" />
+      <separator />
+      <action id="CopyPathWithCode.CreateFolder" class="com.khanhromvn.copypathwithcode.actions.CreateFolderAction" text="Create Folder" description="Create a new code folder" />
+      <action id="CopyPathWithCode.AddFileToFolder" class="com.khanhromvn.copypathwithcode.actions.AddFileToFolderAction" text="Add Current File to Folder" description="Add current file to a folder" />
+      <action id="CopyPathWithCode.RemoveFileFromFolder" class="com.khanhromvn.copypathwithcode.actions.RemoveFileFromFolderAction" text="Remove Current File from Folder" description="Remove current file from a folder" />
+      <action id="CopyPathWithCode.OpenFolderFiles" class="com.khanhromvn.copypathwithcode.actions.OpenFolderFilesAction" text="Open Folder Files" description="Open all files in a folder" />
+      <action id="CopyPathWithCode.CopyFolderContents" class="com.khanhromvn.copypathwithcode.actions.CopyFolderContentsAction" text="Copy Folder Contents" description="Copy all files content in a folder" />
+      <action id="CopyPathWithCode.DeleteFolder" class="com.khanhromvn.copypathwithcode.actions.DeleteFolderAction" text="Delete Folder" description="Delete a folder" />
+    </group>
+  </actions>
+</idea-plugin>

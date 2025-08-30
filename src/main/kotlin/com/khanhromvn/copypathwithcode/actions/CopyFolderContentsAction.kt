@@ -22,18 +22,19 @@ class CopyFolderContentsAction : AnAction() {
         }
         
         val folderNames = folders.map { it.name }.toTypedArray()
-        val selectedFolder = Messages.showChooseDialog(
+        val selectedIndex = Messages.showChooseDialog(
             project,
             "Select folder to copy contents",
             "Copy Folder Contents",
             Messages.getQuestionIcon(),
             folderNames,
-            folderNames.firstOrNull()
-        ) ?: return
-        if (selectedFolder == null) return
+            folderNames.first()
+        )
+        
+        if (selectedIndex == -1) return // User cancelled
         
         ApplicationManager.getApplication().invokeLater {
-            val folder = folders.first { it.name == selectedFolder }
+            val folder = folders[selectedIndex]
             val copiedFiles = mutableListOf<CopiedFile>()
             
             folder.files.forEach { filePath ->
@@ -52,7 +53,7 @@ class CopyFolderContentsAction : AnAction() {
                 ClipboardUtils.copyToClipboard(copiedFiles)
                 Messages.showInfoMessage("Copied ${copiedFiles.size} files from \"${folder.name}\"", "Copy Path with Code")
             } else {
-                Messages.showWarningMessage("No files to copy in \"${folder.name}\"", "Copy Path with Code")
+                Messages.showWarningDialog(project, "No files to copy in \"${folder.name}\"", "Copy Path with Code")
             }
         }
     }

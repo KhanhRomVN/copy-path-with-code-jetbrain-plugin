@@ -22,7 +22,10 @@ class CreateFolderAction : AnAction() {
             "Create Folder",
             Messages.getQuestionIcon(),
             "My Code Folder",
-            InputValidator { input -> input.isNotBlank() }
+            object : InputValidator {
+                override fun checkInput(inputString: String?): Boolean = inputString?.isNotBlank() == true
+                override fun canClose(inputString: String?): Boolean = inputString?.isNotBlank() == true
+            }
         ) ?: return
 
         val openFiles = FileEditorManager.getInstance(project).openFiles

@@ -21,18 +21,18 @@ class AddFileToFolderAction : AnAction() {
         }
         
         val folderNames = folders.map { it.name }.toTypedArray()
-        val selectedFolder = Messages.showChooseDialog(
-            project,
+        val selectedIndex = Messages.showChooseDialog(
             "Select folder to add file",
             "Add File to Folder",
-            Messages.getQuestionIcon(),
             folderNames,
-            folderNames.firstOrNull()
-        ) ?: return
-        if (selectedFolder == null) return
+            folderNames.first(),
+            null
+        )
+        
+        if (selectedIndex < 0) return // User cancelled
         
         ApplicationManager.getApplication().invokeLater {
-            val folder = folders.first { it.name == selectedFolder }
+            val folder = folders[selectedIndex] // Use index to get the folder
             if (!folder.files.contains(currentFile.path)) {
                 val updatedFiles = folder.files.toMutableList()
                 updatedFiles.add(currentFile.path)
