@@ -3,6 +3,7 @@
 *.iml
 out/
 build/
+build
 
 # Gradle
 .gradle/

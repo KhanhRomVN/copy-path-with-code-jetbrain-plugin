@@ -18,19 +18,18 @@ import javax.swing.KeyStroke
 class CopyPathWithContentAction : AnAction() {
     
     init {
-        // Register custom shortcut to avoid conflicts with JetBrains default shortcuts
-        // Use Ctrl+Shift+Alt+C instead of Ctrl+Alt+C to avoid conflicts
+        // Register custom shortcut to use Ctrl+Alt+C
         val shortcutKeyStroke = if (SystemInfo.isMac) {
-            // For macOS: Cmd+Shift+Alt+C
+            // For macOS: Cmd+Alt+C
             KeyStroke.getKeyStroke(
                 KeyEvent.VK_C, 
-                InputEvent.META_DOWN_MASK or InputEvent.SHIFT_DOWN_MASK or InputEvent.ALT_DOWN_MASK
+                InputEvent.META_DOWN_MASK or InputEvent.ALT_DOWN_MASK
             )
         } else {
-            // For Windows/Linux: Ctrl+Shift+Alt+C
+            // For Windows/Linux: Ctrl+Alt+C
             KeyStroke.getKeyStroke(
                 KeyEvent.VK_C, 
-                InputEvent.CTRL_DOWN_MASK or InputEvent.SHIFT_DOWN_MASK or InputEvent.ALT_DOWN_MASK
+                InputEvent.CTRL_DOWN_MASK or InputEvent.ALT_DOWN_MASK
             )
         }
         
@@ -62,7 +61,7 @@ class CopyPathWithContentAction : AnAction() {
             ClipboardUtils.copyToClipboard(listOf(copiedFile))
             
             // Show notification with the shortcut info
-            val shortcutText = if (SystemInfo.isMac) "⌘⇧⌥C" else "Ctrl+Shift+Alt+C"
+            val shortcutText = if (SystemInfo.isMac) "⌥⌘C" else "Ctrl+Alt+C"
             Messages.showInfoMessage(
                 project,
                 "File content copied to clipboard!\nShortcut: $shortcutText", 

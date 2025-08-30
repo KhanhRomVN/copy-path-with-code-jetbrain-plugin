@@ -16,16 +16,16 @@
     <group id="CopyPathWithCode.TopMenu" text="Copy Path with Code" description="Copy Path with Code Actions" popup="true">
       <add-to-group group-id="ToolsMenu" anchor="first" />
       <!-- Main copy action with enhanced shortcut -->
-      <action id="CopyPathWithCode.CopyPathWithContent" class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction" text="Copy Path and Content" description="Copy current file path and content (Ctrl+Shift+Alt+C)">
-        <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt C" />
-        <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt C" />
-        <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt C" />
+      <action id="CopyPathWithCode.CopyPathWithContent" class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction" text="Copy Path and Content" description="Copy current file path and content (Ctrl+Alt+C)">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt C" />
+        <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt C" />
+        <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt C" />
       </action>
       <!-- Clear clipboard with shortcut -->
-      <action id="CopyPathWithCode.ClearClipboard" class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction" text="Clear Clipboard" description="Clear copied paths and content (Ctrl+Shift+Alt+X)">
-        <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt X" />
-        <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt X" />
-        <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt X" />
+      <action id="CopyPathWithCode.ClearClipboard" class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction" text="Clear Clipboard" description="Clear copied paths and content (Ctrl+Alt+Z)">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt Z" />
+        <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt Z" />
+        <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt Z" />
       </action>
       <separator />
       <action id="CopyPathWithCode.CreateFolder" class="com.khanhromvn.copypathwithcode.actions.CreateFolderAction" text="Create Folder" description="Create a new code folder" />

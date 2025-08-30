@@ -4,33 +4,31 @@
     <version>2.3.1</version>
     <vendor email="khanhromvn@gmail.com" url="https://github.com/khanhromvn">KhanhRom</vendor>
 
-    <description><![CDATA[
-        Copy file path along with its content to clipboard with enhanced keyboard shortcuts.<br>
-        <em>Features:</em>
-        <ul>
-            <li>Copy file path and content to clipboard (Ctrl+Shift+Alt+C / ⌘⇧⌥C on Mac)</li>
-            <li>Copy folder contents with shortcut (Ctrl+Shift+Alt+F / ⌘⇧⌥F on Mac)</li>
-            <li>Clear clipboard with shortcut (Ctrl+Shift+Alt+X / ⌘⇧⌥X on Mac)</li>
-            <li>Manage code folders with files</li>
-            <li>Copy entire folder contents</li>
-            <li>Smart selection support - copy only selected text or entire file</li>
-            <li>Cross-platform keyboard shortcuts that avoid IDE conflicts</li>
-        </ul>
-        <br>
-        <em>Keyboard Shortcuts:</em>
-        <ul>
-            <li>Windows/Linux: Ctrl+Shift+Alt+C, Ctrl+Shift+Alt+F, Ctrl+Shift+Alt+X</li>
-            <li>macOS: ⌘⇧⌥C, ⌘⇧⌥F, ⌘⇧⌥X</li>
-        </ul>
-    ]]></description>
+<description><![CDATA[
+    Copy file path along with its content to clipboard with enhanced keyboard shortcuts.<br>
+    <em>Features:</em>
+    <ul>
+        <li>Copy file path and content to clipboard (Ctrl+Alt+C / ⌥⌘C on Mac)</li>
+        <li>Copy folder contents with shortcut (Ctrl+Alt+F / ⌥⌘F on Mac)</li>
+        <li>Clear clipboard with shortcut (Ctrl+Alt+Z / ⌥⌘Z on Mac)</li>
+        <li>Manage code folders with files</li>
+        <li>Copy entire folder contents</li>
+        <li>Smart selection support - copy only selected text or entire file</li>
+        <li>Cross-platform keyboard shortcuts that avoid IDE conflicts</li>
+    </ul>
+    <br>
+    <em>Keyboard Shortcuts:</em>
+    <ul>
+        <li>Windows/Linux: Ctrl+Alt+C, Ctrl+Alt+F, Ctrl+Alt+Z</li>
+        <li>macOS: ⌥⌘C, ⌥⌘F, ⌥⌘Z</li>
+    </ul>
+]]></description>
 
     <change-notes><![CDATA[
-        Version 0.0.7:
-        - Enhanced keyboard shortcuts to avoid conflicts with JetBrains IDE defaults
-        - Added cross-platform shortcut support (Windows/Linux/macOS)
-        - Improved action availability and text updates
-        - Added shortcut information in notifications
-        - Better conflict resolution with existing IDE shortcuts
+        Version 2.3.1:
+        - Updated keyboard shortcuts to use Ctrl+Shift+Alt combinations
+        - Changed clear clipboard shortcut to Ctrl+Shift+Alt+Z
+        - Enhanced conflict resolution with existing IDE shortcuts
     ]]></change-notes>
 
     <idea-version since-build="203"/>
@@ -51,20 +49,20 @@
             <action id="CopyPathWithCode.CopyPathWithContent" 
                     class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction"
                     text="Copy Path and Content" 
-                    description="Copy current file path and content (Ctrl+Shift+Alt+C)">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt C"/>
-                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt C"/>
-                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt C"/>
+                    description="Copy current file path and content (Ctrl+Alt+C)">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt C"/>
+                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt C"/>
+                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt C"/>
             </action>
                     
             <!-- Clear clipboard with shortcut -->
             <action id="CopyPathWithCode.ClearClipboard" 
                     class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction"
                     text="Clear Clipboard" 
-                    description="Clear copied paths and content (Ctrl+Shift+Alt+X)">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt X"/>
-                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt X"/>
-                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt X"/>
+                    description="Clear copied paths and content (Ctrl+Alt+Z)">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt Z"/>
+                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt Z"/>
+                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt Z"/>
             </action>
                     
             <separator/>
