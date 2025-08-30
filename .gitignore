@@ -1,0 +1,18 @@
+# IntelliJ
+.idea/
+*.iml
+out/
+build/
+
+# Gradle
+.gradle/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Artifacts
+*.jar
+*.war
+*.ear
