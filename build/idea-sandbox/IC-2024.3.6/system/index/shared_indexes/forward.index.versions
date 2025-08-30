@@ -15,8 +15,8 @@ shared.index.file.content.hash.forward.index.sih.javafx.custom.component:2
 shared.index.file.content.hash.forward.index.sih.DomFileIndex:2
 shared.index.file.content.hash.forward.index.sih.KotlinTopLevelClassLikeDeclarationByPackageShortNameIndex:2
 shared.index.file.content.hash.forward.index.sih.java.class.extlist:1
-shared.index.file.content.hash.forward.index.sih.gr.class.super:1
 shared.index.file.content.hash.forward.index.sih.dom.elementClass:1
+shared.index.file.content.hash.forward.index.sih.gr.class.super:1
 shared.index.file.content.hash.forward.index.sih.properties.index:1
 shared.index.file.content.hash.forward.index.sih.XmlNamespaces:2
 shared.index.file.content.hash.forward.index.sih.jvm.static.member.name:1
@@ -45,7 +45,7 @@ shared.index.file.content.hash.forward.index.sih.javafx.id.name:2
 shared.index.file.content.hash.forward.index.sih.org.jetbrains.kotlin.idea.stubindex.KotlinTopLevelClassByPackageIndex:1
 shared.index.file.content.hash.forward.index.sih.org.jetbrains.kotlin.idea.vfilefinder.KotlinJvmModuleAnnotationsIndex:2
 shared.index.file.content.hash.forward.index.sih.KotlinExtensionsInObjectsByReceiverTypeIndex:1
-shared.index.file.content.hash.forward.index.sih.FilenameIndex:1
+shared.index.file.content.hash.forward.index.sih.FilenameIndex:5
 shared.index.file.content.hash.forward.index.sih.editorconfig.index.name:2
 shared.index.file.content.hash.forward.index.sih.XmlTagNames:2
 shared.index.file.content.hash.forward.index.sih.java.class.fqn:1
@@ -62,8 +62,8 @@ shared.index.file.content.hash.forward.index.sih.org.jetbrains.kotlin.idea.stubi
 shared.index.file.content.hash.forward.index.sih.html5.custom.attributes.index:2
 shared.index.file.content.hash.forward.index.sih.org.jetbrains.kotlin.idea.stubindex.KotlinJvmNameAnnotationIndex:1
 shared.index.file.content.hash.forward.index.sih.dom.namespaceKey:1
-shared.index.file.content.hash.forward.index.sih.gr.script.class:1
 shared.index.file.content.hash.forward.index.sih.KotlinTopLevelPropertyByPackageIndex:1
+shared.index.file.content.hash.forward.index.sih.gr.script.class:1
 shared.index.file.content.hash.forward.index.sih.org.jetbrains.kotlin.idea.stubindex.KotlinFullClassNameIndex:1
 shared.index.file.content.hash.forward.index.sih.org.jetbrains.kotlin.idea.stubindex.KotlinAnnotationsIndex:1
 shared.index.file.content.hash.forward.index.sih.KotlinProbablyContractedFunctionShortNameIndex:1

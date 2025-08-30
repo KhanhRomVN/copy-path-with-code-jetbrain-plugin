@@ -1,20 +1,12 @@
 <idea-plugin>
   <id>com.khanhromvn.copy-path-with-code</id>
-  <name>IntelliJ Platform Plugin Template</name>
+  <name>Copy Path With Code</name>
   <version>2.3.1</version>
   <vendor email="khanhromvn@gmail.com" url="https://github.com/khanhromvn">KhanhRom</vendor>
   <description><![CDATA[<p>Copy Path With Code is a JetBrains IDE plugin that enables copying file and folder paths with customizable formatting directly from the IDE.</p>]]></description>
   <change-notes><![CDATA[<h3>Added</h3>
 
-<ul><li>Add <code>platformBundledModules</code> to <code>gradle.properties</code> along with <code>bundledModules()</code> helper to the Gradle build file</li></ul>
-
-<h3>Changed</h3>
-
-<ul><li>Dependencies - upgrade <code>org.jetbrains.intellij.platform</code> to <code>2.7.1</code></li></ul>
-
-<h3>Fixed</h3>
-
-<ul><li>GitHub: Fixed the missing <code>$RELEASE_NOTE </code> parent directory in the Release workflow</li></ul>]]></change-notes>
+<ul><li>Enhanced keyboard shortcuts to avoid conflicts with JetBrains IDE defaults</li><li>Added cross-platform shortcut support (Windows/Linux/macOS)</li><li>Improved action availability and text updates</li><li>Added shortcut information in notifications</li><li>Better conflict resolution with existing IDE shortcuts</li></ul>]]></change-notes>
   <idea-version since-build="243" />
   <depends>com.intellij.modules.platform</depends>
   <extensions defaultExtensionNs="com.intellij">
@@ -23,15 +15,45 @@
   <actions>
     <group id="CopyPathWithCode.TopMenu" text="Copy Path with Code" description="Copy Path with Code Actions" popup="true">
       <add-to-group group-id="ToolsMenu" anchor="first" />
-      <action id="CopyPathWithCode.CopyPathWithContent" class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction" text="Copy Path and Content" description="Copy current file path and content" />
-      <action id="CopyPathWithCode.ClearClipboard" class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction" text="Clear Clipboard" description="Clear copied paths and content" />
+      <!-- Main copy action with enhanced shortcut -->
+      <action id="CopyPathWithCode.CopyPathWithContent" class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction" text="Copy Path and Content" description="Copy current file path and content (Ctrl+Shift+Alt+C)">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt C" />
+        <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt C" />
+        <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt C" />
+      </action>
+      <!-- Clear clipboard with shortcut -->
+      <action id="CopyPathWithCode.ClearClipboard" class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction" text="Clear Clipboard" description="Clear copied paths and content (Ctrl+Shift+Alt+X)">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt X" />
+        <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt X" />
+        <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt X" />
+      </action>
       <separator />
       <action id="CopyPathWithCode.CreateFolder" class="com.khanhromvn.copypathwithcode.actions.CreateFolderAction" text="Create Folder" description="Create a new code folder" />
       <action id="CopyPathWithCode.AddFileToFolder" class="com.khanhromvn.copypathwithcode.actions.AddFileToFolderAction" text="Add Current File to Folder" description="Add current file to a folder" />
       <action id="CopyPathWithCode.RemoveFileFromFolder" class="com.khanhromvn.copypathwithcode.actions.RemoveFileFromFolderAction" text="Remove Current File from Folder" description="Remove current file from a folder" />
       <action id="CopyPathWithCode.OpenFolderFiles" class="com.khanhromvn.copypathwithcode.actions.OpenFolderFilesAction" text="Open Folder Files" description="Open all files in a folder" />
-      <action id="CopyPathWithCode.CopyFolderContents" class="com.khanhromvn.copypathwithcode.actions.CopyFolderContentsAction" text="Copy Folder Contents" description="Copy all files content in a folder" />
+      <!-- Copy folder contents with shortcut -->
+      <action id="CopyPathWithCode.CopyFolderContents" class="com.khanhromvn.copypathwithcode.actions.CopyFolderContentsAction" text="Copy Folder Contents" description="Copy all files content in a folder (Ctrl+Shift+Alt+F)">
+        <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt F" />
+        <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt F" />
+        <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt F" />
+      </action>
       <action id="CopyPathWithCode.DeleteFolder" class="com.khanhromvn.copypathwithcode.actions.DeleteFolderAction" text="Delete Folder" description="Delete a folder" />
     </group>
+    <!-- Context menu actions for easier access -->
+    <group id="CopyPathWithCode.EditorPopup" text="Copy Path with Code">
+      <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Copy" />
+      <action id="CopyPathWithCode.CopyPathWithContent.Context" class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction" text="Copy Path and Content" description="Copy current file path and content" />
+      <action id="CopyPathWithCode.AddFileToFolder.Context" class="com.khanhromvn.copypathwithcode.actions.AddFileToFolderAction" text="Add to Code Folder" description="Add current file to a folder" />
+    </group>
+    <!-- Project view context menu -->
+    <group id="CopyPathWithCode.ProjectViewPopup" text="Copy Path with Code">
+      <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="$Copy" />
+      <action id="CopyPathWithCode.CopyPathWithContent.Project" class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction" text="Copy Path and Content" description="Copy file path and content" />
+    </group>
   </actions>
+  <!-- Application components for initialization -->
+  <applicationListeners>
+    <listener class="com.khanhromvn.copypathwithcode.listeners.PluginInitListener" topic="com.intellij.openapi.application.ApplicationActivationListener" />
+  </applicationListeners>
 </idea-plugin>

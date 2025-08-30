@@ -1,21 +1,36 @@
 <idea-plugin>
     <id>com.khanhromvn.copy-path-with-code</id>
     <name>Copy Path with Code</name>
-    <version>0.0.6</version>
+    <version>2.3.1</version>
     <vendor email="khanhromvn@gmail.com" url="https://github.com/khanhromvn">KhanhRom</vendor>
 
     <description><![CDATA[
-        Copy file path along with its content to clipboard.<br>
+        Copy file path along with its content to clipboard with enhanced keyboard shortcuts.<br>
         <em>Features:</em>
         <ul>
-            <li>Copy file path and content to clipboard</li>
+            <li>Copy file path and content to clipboard (Ctrl+Shift+Alt+C / ⌘⇧⌥C on Mac)</li>
+            <li>Copy folder contents with shortcut (Ctrl+Shift+Alt+F / ⌘⇧⌥F on Mac)</li>
+            <li>Clear clipboard with shortcut (Ctrl+Shift+Alt+X / ⌘⇧⌥X on Mac)</li>
             <li>Manage code folders with files</li>
             <li>Copy entire folder contents</li>
+            <li>Smart selection support - copy only selected text or entire file</li>
+            <li>Cross-platform keyboard shortcuts that avoid IDE conflicts</li>
+        </ul>
+        <br>
+        <em>Keyboard Shortcuts:</em>
+        <ul>
+            <li>Windows/Linux: Ctrl+Shift+Alt+C, Ctrl+Shift+Alt+F, Ctrl+Shift+Alt+X</li>
+            <li>macOS: ⌘⇧⌥C, ⌘⇧⌥F, ⌘⇧⌥X</li>
         </ul>
     ]]></description>
 
     <change-notes><![CDATA[
-        Initial version of Copy Path with Code plugin for JetBrains IDEs.
+        Version 0.0.7:
+        - Enhanced keyboard shortcuts to avoid conflicts with JetBrains IDE defaults
+        - Added cross-platform shortcut support (Windows/Linux/macOS)
+        - Improved action availability and text updates
+        - Added shortcut information in notifications
+        - Better conflict resolution with existing IDE shortcuts
     ]]></change-notes>
 
     <idea-version since-build="203"/>
@@ -32,39 +47,93 @@
                description="Copy Path with Code Actions" popup="true">
             <add-to-group group-id="ToolsMenu" anchor="first"/>
             
+            <!-- Main copy action with enhanced shortcut -->
             <action id="CopyPathWithCode.CopyPathWithContent" 
                     class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction"
-                    text="Copy Path and Content" description="Copy current file path and content"/>
+                    text="Copy Path and Content" 
+                    description="Copy current file path and content (Ctrl+Shift+Alt+C)">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt C"/>
+                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt C"/>
+                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt C"/>
+            </action>
                     
+            <!-- Clear clipboard with shortcut -->
             <action id="CopyPathWithCode.ClearClipboard" 
                     class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction"
-                    text="Clear Clipboard" description="Clear copied paths and content"/>
+                    text="Clear Clipboard" 
+                    description="Clear copied paths and content (Ctrl+Shift+Alt+X)">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt X"/>
+                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt X"/>
+                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt X"/>
+            </action>
                     
             <separator/>
             
             <action id="CopyPathWithCode.CreateFolder" 
                     class="com.khanhromvn.copypathwithcode.actions.CreateFolderAction"
-                    text="Create Folder" description="Create a new code folder"/>
+                    text="Create Folder" 
+                    description="Create a new code folder"/>
                     
             <action id="CopyPathWithCode.AddFileToFolder" 
                     class="com.khanhromvn.copypathwithcode.actions.AddFileToFolderAction"
-                    text="Add Current File to Folder" description="Add current file to a folder"/>
+                    text="Add Current File to Folder" 
+                    description="Add current file to a folder"/>
                     
             <action id="CopyPathWithCode.RemoveFileFromFolder" 
                     class="com.khanhromvn.copypathwithcode.actions.RemoveFileFromFolderAction"
-                    text="Remove Current File from Folder" description="Remove current file from a folder"/>
+                    text="Remove Current File from Folder" 
+                    description="Remove current file from a folder"/>
                     
             <action id="CopyPathWithCode.OpenFolderFiles" 
                     class="com.khanhromvn.copypathwithcode.actions.OpenFolderFilesAction"
-                    text="Open Folder Files" description="Open all files in a folder"/>
+                    text="Open Folder Files" 
+                    description="Open all files in a folder"/>
                     
+            <!-- Copy folder contents with shortcut -->
             <action id="CopyPathWithCode.CopyFolderContents" 
                     class="com.khanhromvn.copypathwithcode.actions.CopyFolderContentsAction"
-                    text="Copy Folder Contents" description="Copy all files content in a folder"/>
+                    text="Copy Folder Contents" 
+                    description="Copy all files content in a folder (Ctrl+Shift+Alt+F)">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt F"/>
+                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta shift alt F"/>
+                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta shift alt F"/>
+            </action>
                     
             <action id="CopyPathWithCode.DeleteFolder" 
                     class="com.khanhromvn.copypathwithcode.actions.DeleteFolderAction"
-                    text="Delete Folder" description="Delete a folder"/>
+                    text="Delete Folder" 
+                    description="Delete a folder"/>
+        </group>
+
+        <!-- Context menu actions for easier access -->
+        <group id="CopyPathWithCode.EditorPopup" text="Copy Path with Code">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Copy"/>
+            
+            <action id="CopyPathWithCode.CopyPathWithContent.Context" 
+                    class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction"
+                    text="Copy Path and Content" 
+                    description="Copy current file path and content"/>
+                    
+            <action id="CopyPathWithCode.AddFileToFolder.Context" 
+                    class="com.khanhromvn.copypathwithcode.actions.AddFileToFolderAction"
+                    text="Add to Code Folder" 
+                    description="Add current file to a folder"/>
+        </group>
+        
+        <!-- Project view context menu -->
+        <group id="CopyPathWithCode.ProjectViewPopup" text="Copy Path with Code">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="$Copy"/>
+            
+            <action id="CopyPathWithCode.CopyPathWithContent.Project" 
+                    class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction"
+                    text="Copy Path and Content" 
+                    description="Copy file path and content"/>
         </group>
     </actions>
+
+    <!-- Application components for initialization -->
+    <applicationListeners>
+        <listener class="com.khanhromvn.copypathwithcode.listeners.PluginInitListener"
+                  topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+    </applicationListeners>
 </idea-plugin>

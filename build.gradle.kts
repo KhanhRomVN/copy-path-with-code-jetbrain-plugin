@@ -1,3 +1,5 @@
+// copy-path-with-code-jetbrain-plugin/build.gradle.kts
+
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
@@ -96,10 +98,9 @@ intellijPlatform {
 
     publishing {
         token = providers.environmentVariable("PUBLISH_TOKEN")
-        // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
-        // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
-        // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
-        channels = providers.gradleProperty("pluginVersion").map { listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" }) }
+        channels = providers.gradleProperty("pluginVersion").map {
+            listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" })
+        }
     }
 
     pluginVerification {
@@ -133,6 +134,21 @@ tasks {
 
     publishPlugin {
         dependsOn(patchChangelog)
+    }
+
+    // Add this task before the patchPluginXml configuration
+    patchPluginXml {
+        changeNotes.set(providers.gradleProperty("pluginVersion").map { pluginVersion ->
+            try {
+                val changelogItem = changelog.getOrNull(pluginVersion) ?: changelog.getUnreleased()
+                changelog.renderItem(
+                    changelogItem.withHeader(false).withEmptySections(false),
+                    Changelog.OutputType.HTML,
+                )
+            } catch (e: Exception) {
+                "No change notes available for version $pluginVersion"
+            }
+        })
     }
 }
 

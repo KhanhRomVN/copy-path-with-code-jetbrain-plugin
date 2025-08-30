@@ -7,17 +7,17 @@
     </option>
   </component>
   <component name="FileEditorManager">
-    <leaf ideFingerprint="2m3v4tk7hk051" />
+    <leaf ideFingerprint="2m3v4tk7hk051" SIDE_TABS_SIZE_LIMIT_KEY="-1" />
   </component>
-  <component name="FileTypeUsageLocalSummary"><![CDATA[{
-  "data": {
-    "WebPreview": {
-      "usageCount": 1,
-      "lastUsed": 1756515738876
+  <component name="FileTypeUsageLocalSummary">{
+  &quot;data&quot;: {
+    &quot;WebPreview&quot;: {
+      &quot;usageCount&quot;: 1,
+      &quot;lastUsed&quot;: 1756515738876
     }
   }
-}]]></component>
-  <component name="IdeDocumentHistory"><![CDATA[{}]]></component>
+}</component>
+  <component name="IdeDocumentHistory">{}</component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
       <set>
@@ -48,7 +48,7 @@
       <window_info anchor="right" id="Database" order="2" weight="0.25" />
       <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
-      <window_info anchor="right" id="Copy Path with Code" order="4" />
+      <window_info anchor="right" id="Copy Path with Code" order="5" />
       <unified_weights left="0.2408854" />
     </layoutV2>
     <recentWindows>
