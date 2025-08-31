@@ -49,20 +49,18 @@
             <action id="CopyPathWithCode.CopyPathWithContent" 
                     class="com.khanhromvn.copypathwithcode.actions.CopyPathWithContentAction"
                     text="Copy Path and Content" 
-                    description="Copy current file path and content (Ctrl+Alt+C)">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt C"/>
-                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt C"/>
-                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt C"/>
+                    description="Copy current file path and content (Ctrl+Alt+A)">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt A"/>
+                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt A"/>
             </action>
                     
             <!-- Clear clipboard with shortcut -->
             <action id="CopyPathWithCode.ClearClipboard" 
                     class="com.khanhromvn.copypathwithcode.actions.ClearClipboardAction"
                     text="Clear Clipboard" 
-                    description="Clear copied paths and content (Ctrl+Alt+Z)">
-                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt Z"/>
-                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt Z"/>
-                <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta alt Z"/>
+                    description="Clear copied paths and content (Ctrl+Alt+Q)">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt Q"/>
+                <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta alt Q"/>
             </action>
                     
             <separator/>

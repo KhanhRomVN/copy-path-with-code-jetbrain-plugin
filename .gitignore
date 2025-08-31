@@ -2,11 +2,12 @@
 .idea/
 *.iml
 out/
-build/
-build
 
-# Gradle
+# Build artifacts
+build/
 .gradle/
+
+# Logs
 *.log
 
 # OS
