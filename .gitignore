@@ -1,20 +1,67 @@
-# IntelliJ
+# ====================================
+# IntelliJ IDEA / JetBrains
+# ====================================
 .idea/
 *.iml
 out/
+*.ipr
+*.iws
 
-# Build artifacts
-build/
+# IntelliJ Platform Plugin SDK (cache, sandbox, runtime data)
+.intellijPlatform/
+sandbox/
+.idea_modules/
+
+# ====================================
+# Gradle
+# ====================================
 .gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 
-# Logs
+# ====================================
+# Logs & Reports
+# ====================================
 *.log
+*.lock
+*.gz
+*.hprof
+*.stacktrace
+*.swp
+hs_err_pid*
 
+# Test reports & coverage
+test-results/
+reports/
+coverage/
+jacoco/
+*.exec
+
+# ====================================
 # OS
+# ====================================
 .DS_Store
 Thumbs.db
 
-# Artifacts
+# ====================================
+# Archives / Artifacts
+# ====================================
 *.jar
 *.war
 *.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ====================================
+# Kotlin/Java Specific
+# ====================================
+*.class
+*.kt~          # backup file
+*.java~        # backup file
+
+# ====================================
+# Other
+# ====================================
+local.properties
